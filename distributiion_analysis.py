@@ -20,42 +20,6 @@ def get_list_of_files_new(path):
                         files_name_stas.append(file)
     return files_name_stas
 
-# read the csv file and check if the file names in 'img_path' column exist in the files list
-# def count_and_percentage(files):
-#     print("length of files list: ", len(files))
-#     total_count = 0
-#     match_count_surgical_tape = 0
-#     match_count_hand = 0
-#     match_count_eye_retractors = 0
-#     with open('./data.csv', 'r') as csvfile:
-#         reader = csv.DictReader(csvfile)
-#         for row in reader:
-#             total_count += 1
-#             file_name = os.path.basename(row['img_path'])
-#             if file_name in files and row['Surgical Tape'] == '0':
-#                 # print(f"{file_name} exists in the files list and its 'Viscoelastic' value is '0'")
-#                 match_count_surgical_tape += 1
-#             if file_name in files and row['Hand'] == '0':
-#                 # print(f"{file_name} exists in the files list and its 'Hand' value is '0'")
-#                 match_count_hand += 1
-#             if file_name in files and row['Eye Retractors'] == '0':
-#                 match_count_eye_retractors += 1
-            
-#     print("total count: ", total_count)
-#     if match_count_surgical_tape == 0:
-#         print("warning: Surgical Tape has no match")
-#     else: 
-#         print(f"Surgical tape: count: {match_count_surgical_tape}, percentage: {match_count_surgical_tape / len(files) * 100}%")
-#     if match_count_hand == 0:
-#         print("warning: Hand has no match")
-#     else:
-#         print(f"Hand: count: {match_count_hand}, percentage: {match_count_hand / len(files) * 100}%")
-#     if match_count_eye_retractors == 0:
-#         print("warning: Eye Retractors has no match")
-#     else:
-#         print(f"Eye Retractors: count: {match_count_eye_retractors}, percentage: {match_count_eye_retractors / len(files) * 100}%")
-#     print("------------------------")
-
 def count_and_percentage_new(files, class_name):
     # print(f"length of files list: {class_name}: ", len(files))
     total_count = 0
@@ -90,7 +54,7 @@ def stastics_each_class():
     """
     Calculate the statistics for each class in different subsets of the dataset.
     """
-    
+
     for class_name in class_list:
         print(f"{class_name}: ")
         for path in ["train/blacklist", "train/whitelist", "test/blacklist", "test/whitelist"]:
