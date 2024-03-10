@@ -7,6 +7,7 @@ class_list.remove('ssim')
 class_list.remove('blpx')
 
 def get_list_of_files_new(path):
+    # 统计每个子数据集中的文件名，并且返回由文件名组成的列表
     path = os.path.join('./new_dataset/', path)
     files_name_stas = []
     for subdir in os.listdir(path):
@@ -18,60 +19,12 @@ def get_list_of_files_new(path):
                 for file in os.listdir(subdir_path):                    
                     if not file.startswith('.') and not file.startswith('label_'):
                         files_name_stas.append(file)
+    print("Number of files in ", path, " is ", len(files_name_stas))
     return files_name_stas
-
-def count_and_percentage_new(files, class_name):
-    # print(f"length of files list: {class_name}: ", len(files))
-    total_count = 0
-    match_count = 0
-    with open('./data.csv', 'r') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            total_count += 1
-            file_name = os.path.basename(row['img_path'])
-            if file_name in files and row[class_name] == '0':
-                match_count += 1
-    if match_count == 0:
-        print(f"warning: {class_name} has no match")
-    else:
-        print(f"{class_name}: percentage: {match_count / len(files) * 100}%")
-    print("------------------------")
-
-def stastics_each_directory():
-    '''
-    Calculate the statistics for each class in different subdirectory of the dataset.
-    '''
-
-    for path in ["train/blacklist", "train/whitelist", "test/blacklist", "test/whitelist"]:
-        print(f"{path}: ")
-        files = get_list_of_files_new(path)
-        files = [file[6:] if file.startswith('label_') or file.startswith('image_') else file for file in files]
-        print(f"length of {path}: ", len(files))
-        for class_name in class_list:
-            count_and_percentage_new(files, class_name)
 
 def stastics_each_class():
     """
-    Calculate the statistics for each class in different subsets of the dataset.
-    """
-
-    for class_name in class_list:
-        print(f"{class_name}: ")
-        for path in ["train/blacklist", "train/whitelist", "test/blacklist", "test/whitelist"]:
-            print(f"{path}: ")
-            files = get_list_of_files_new(path)
-            files = [file[6:] if file.startswith('label_') or file.startswith('image_') else file for file in files]
-            count_and_percentage_new(files, class_name)
-        print("------------------------")
-        print("------------------------")
-        print("/n")
-        
-def stastics_each_class_adjust():
-    """
-    Calculate the statistics for each class in different subsets of the dataset.
-    
-    Returns:
-        None
+    统计每个类在各个子数据集中的分布百分比。
     """
     class_distributions = {} # 用于存储每个类在各子数据集中的分布百分比
     for class_name in class_list:
@@ -79,7 +32,7 @@ def stastics_each_class_adjust():
         for path in ["train/blacklist", "train/whitelist", "test/blacklist", "test/whitelist"]:
             files = get_list_of_files_new(path)
             files = [file[6:] if file.startswith('label_') or file.startswith('image_') else file for file in files]
-            percentage = count_and_percentage_new(files, class_name) # 获取百分比
+            percentage = count_and_percentage(files, class_name) # 获取百分比
             distributions.append(percentage)
         class_distributions[class_name] = distributions
 
@@ -88,7 +41,10 @@ def stastics_each_class_adjust():
     for class_name, report in imbalance_report.items():
         print(f"Class: {class_name}, Imbalance Report: {report}")
 
-def count_and_percentage_new(files, class_name):
+def count_and_percentage(files, class_name):
+    """
+    计算每个类在子数据集中的分布百分比。
+    """
     total_count = 0
     match_count = 0
     with open('./data.csv', 'r') as csvfile:
@@ -138,7 +94,8 @@ def check_imbalance(class_distributions, threshold=0.2):
     return imbalance_report
         
 if __name__ == '__main__':
-    stastics_each_directory()
+    stastics_each_class()
+
     
         
 

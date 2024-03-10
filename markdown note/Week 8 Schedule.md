@@ -178,3 +178,19 @@ If overfitting is confirmed, then try:
 
 
 
+
+
+
+
+Class: Pupil, Imbalance Report: {'is_imbalanced': True, 'distribution': [0.625, 0.0, 0.0, 0.0], 'problem': ['empty']}
+Class: Surgical Tape, Imbalance Report: {'is_imbalanced': True, 'distribution': [26.25, 0.0, 15.0, 0.0], 'problem': ['empty']}
+Class: Hand, Imbalance Report: {'is_imbalanced': True, 'distribution': [86.875, 55.833333333333336, 87.5, 48.333333333333336], 'problem': ['beyond threshold']}
+Class: Eye Retractors, Imbalance Report: {'is_imbalanced': True, 'distribution': [67.5, 7.916666666666666, 77.5, 5.0], 'problem': ['beyond threshold']}
+Class: Viscoelastic Cannula, Imbalance Report: {'is_imbalanced': True, 'distribution': [94.375, 72.08333333333333, 100.0, 78.33333333333333], 'problem': ['beyond threshold']}
+Class: Bonn Forceps, Imbalance Report: {'is_imbalanced': True, 'distribution': [99.375, 56.666666666666664, 97.5, 55.00000000000001], 'problem': ['beyond threshold']}
+Class: Primary Knife, Imbalance Report: {'is_imbalanced': True, 'distribution': [96.875, 66.66666666666666, 95.0, 70.0], 'problem': ['beyond threshold']}
+Class: Secondary Knife, Imbalance Report: {'is_imbalanced': True, 'distribution': [100.0, 70.83333333333334, 100.0, 71.66666666666667], 'problem': ['beyond threshold']}
+Class: Secondary Knife Handle, Imbalance Report: {'is_imbalanced': True, 'distribution': [100.0, 72.91666666666666, 100.0, 78.33333333333333], 'problem': ['beyond threshold']}
+Class: Suture Needle, Imbalance Report: {'is_imbalanced': True, 'distribution': [99.375, 72.91666666666666, 100.0, 78.33333333333333], 'problem': ['beyond threshold']}
+Class: Troutman Forceps, Imbalance Report: {'is_imbalanced': True, 'distribution': [99.375, 71.25, 100.0, 76.66666666666667], 'problem': ['beyond threshold']}
+
